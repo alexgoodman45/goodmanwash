@@ -9,7 +9,7 @@
         body { color: #333; background-color: #f8fafc; line-height: 1.6; }
         
         header { 
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(30, 58, 138, 0.7)), url('your-before-after-photo.jpg'); 
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(30, 58, 138, 0.7)), url('header.jpg'); 
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;
@@ -32,6 +32,15 @@
         .card h3 { font-size: 1.4rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; }
         .card p { color: #475569; font-size: 1rem; }
         .divider { height: 1px; background: #e2e8f0; margin: 40px 0; }
+        
+        /* New Styles for Gallery and Contact */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .gallery-grid img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 3px solid white; object-fit: cover; }
+        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #38bdf8; }
+        .contact-card p { font-size: 1.15rem; margin-bottom: 15px; }
+        .contact-card a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+        .contact-card a:hover { text-decoration: underline; color: #7dd3fc; }
+
         footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 60px 20px; border-top: 4px solid #0284c7; }
         footer p { margin-bottom: 12px; font-size: 1.05rem; }
         .trust-badge { color: #38bdf8; font-weight: bold; letter-spacing: 1px; font-size: 1.2rem; margin-bottom: 15px; }
@@ -45,7 +54,7 @@
             <h1>Goodman Pressure Washing</h1>
             <p class="subtitle">Professional Exterior Surface Restoration across Willoughby, Mentor, Painesville, and Concord Township</p>
             <div>
-                <a href="tel:[Your Phone Number]" class="cta-btn">Request a Free Quote</a>
+                <a href="tel:5555555555" class="cta-btn">Request a Free Quote</a>
             </div>
         </div>
     </header>
@@ -53,7 +62,7 @@
     <section class="container">
         
         <!-- ========================================== -->
-        <!-- 1. RESIDENTIAL SECTION (NOW ON TOP)        -->
+        <!-- 1. RESIDENTIAL SECTION                     -->
         <!-- ========================================== -->
         <h2>Residential Concrete Restoration</h2>
         <p class="section-desc">Protect your home's structural curb appeal with premium deep cleaning designed exclusively for flat concrete surfaces.</p>
@@ -75,7 +84,7 @@
         <div class="divider"></div>
 
         <!-- ========================================== -->
-        <!-- 2. COMMERCIAL SECTION (NOW AT THE BOTTOM)  -->
+        <!-- 2. COMMERCIAL SECTION                      -->
         <!-- ========================================== -->
         <h2>Commercial Surface Cleaning</h2>
         <p class="section-desc">Keep your storefront walkways and drive-thru lanes pristine, bright, and safe for your customers.</p>
@@ -92,6 +101,33 @@
                 <h3>Dumpster Pad Wash Downs</h3>
                 <p>High-pressure washing paired with specialized treatment applications to lift surface discoloration and sanitize high-traffic commercial waste concrete.</p>
             </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ========================================== -->
+        <!-- 3. OUR WORK (GALLERY SECTION)              -->
+        <!-- ========================================== -->
+        <h2>Our Work</h2>
+        <p class="section-desc">See the difference a professional deep clean makes.</p>
+        <div class="gallery-grid">
+            <!-- Replace the src attributes below with your actual image file names -->
+            <img src="1b.jpg" alt="Before">
+            <img src="1a.jpg" alt="After">
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ========================================== -->
+        <!-- 4. CONTACT INFORMATION                     -->
+        <!-- ========================================== -->
+        <h2>Contact Us</h2>
+        <p class="section-desc">Ready to restore your property's curb appeal? Get in touch today.</p>
+        <div class="contact-card">
+            <!-- Update your actual phone number and email here -->
+            <p><strong>Phone:</strong> <a href="tel:4402070901">(440) 207-0901</a></p>
+            <p><strong>Email:</strong> <a href="mailto:alex@goodmanwash.com">alex@goodmanwash.com</a></p>
+            <p><strong>Service Area:</strong> Lake County, Ohio</p>
         </div>
 
     </section>
