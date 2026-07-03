@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Free Quote | Goodman Pressure Washing</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f8fafc; color: #1e293b; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+        .page-header {
+            background: linear-gradient(135deg, #0f172a, #1d4ed8);
+            color: white;
+            padding: 70px 20px 40px;
+        }
+        .back-link {
+            display: inline-block;
+            color: #bfdbfe;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 { font-size: 2.3rem; margin-bottom: 10px; }
+        .page-header p { font-size: 1.05rem; color: #e2e8f0; }
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            margin-top: -20px;
+            margin-bottom: 40px;
+        }
+        .quote-form { display: grid; gap: 18px; }
+        .quote-form label { display: grid; gap: 8px; font-weight: 600; color: #334155; }
+        .quote-form input,
+        .quote-form textarea,
+        .quote-form select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .quote-form input:focus,
+        .quote-form textarea:focus,
+        .quote-form select:focus {
+            outline: 2px solid #38bdf8;
+            border-color: #38bdf8;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover { background-color: #0369a1; }
+        .note { color: #64748b; font-size: 0.95rem; margin-top: 8px; }
+        footer { text-align: center; color: #64748b; padding: 20px; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Request a Free Quote</h1>
+            <p>Fill out the form below and we’ll follow up with a custom estimate for your property.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-card">
+            <form class="quote-form" action="https://formspree.io/f/xnjklppn" method="POST">
+                <label>
+                    Full Name
+                    <input type="text" name="name" placeholder="Your name" required>
+                </label>
+
+                <label>
+                    Phone Number
+                    <input type="tel" name="phone" placeholder="(440) 000-0000" required>
+                </label>
+
+                <label>
+                    Address
+                    <input type="text" name="address" placeholder="Street address, city, ZIP" required>
+                </label>
+
+                <label>
+                    Email Address
+                    <input type="email" name="email" placeholder="you@example.com" required>
+                </label>
+
+                <label>
+                    Desired Services
+                    <textarea name="services" rows="4" placeholder="Describe the services you want, such as driveway cleaning, sidewalk washing, storefront cleaning, etc." required></textarea>
+                </label>
+
+                <button type="submit" class="cta-btn">Submit Request</button>
+                <p class="note">We typically respond quickly with availability and pricing details.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Goodman Pressure Washing LLC</p>
+    </footer>
+</body>
+</html>
