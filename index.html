@@ -44,6 +44,8 @@
         .gallery-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
         .gallery-card img { width: 100%; height: 420px; display: block; object-fit: cover; object-position: center; }
         .gallery-card.portrait img { height: 560px; object-fit: contain; object-position: center; background: #f8fafc; padding: 8px; }
+        .gallery-card.full-width { grid-column: 1 / -1; justify-self: center; width: min(100%, 680px); }
+        .gallery-card.full-width img { height: auto; max-height: 560px; object-fit: contain; object-position: center; background: #f8fafc; padding: 8px; }
         .gallery-caption { padding: 14px 16px; text-align: center; color: #334155; font-size: 1rem; font-weight: 600; }
         @media (max-width: 700px) {
             .gallery-grid { grid-template-columns: 1fr; }
@@ -138,6 +140,10 @@
             <div class="gallery-card portrait">
                 <img src="2a.jpg" alt="Additional after pressure washing image">
                 <div class="gallery-caption">After — clean, refreshed surface</div>
+            </div>
+            <div class="gallery-card full-width">
+                <img src="driveway.jpg" alt="Driveway after pressure washing">
+                <div class="gallery-caption">Driveway — bright, restored finish</div>
             </div>
         </div>
 
