@@ -39,7 +39,7 @@
         .card p { color: #475569; font-size: 1rem; }
         .divider { height: 1px; background: #e2e8f0; margin: 40px 0; }
         
-        /* New Styles for Gallery and Contact */
+        /* Styles for Gallery and Contact */
         .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px; }
         .gallery-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
         .gallery-card img { width: 100%; height: 420px; display: block; object-fit: cover; object-position: center; }
@@ -47,9 +47,154 @@
         .gallery-card.full-width { grid-column: 1 / -1; justify-self: center; width: min(100%, 680px); }
         .gallery-card.full-width img { height: auto; max-height: 560px; object-fit: contain; object-position: center; background: #f8fafc; padding: 8px; }
         .gallery-caption { padding: 14px 16px; text-align: center; color: #334155; font-size: 1rem; font-weight: 600; }
+        
+        /* ========================================== */
+        /* INTERACTIVE BEFORE & AFTER SLIDER STYLES   */
+        /* ========================================== */
+        .slider-section {
+            grid-column: 1 / -1;
+            margin-bottom: 25px;
+        }
+
+        .before-after-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: #000;
+        }
+
+        .slider-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .before-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.05s linear;
+            pointer-events: none;
+        }
+
+        /* 💡 Animated Floating User Hint Pill */
+        .slider-hint {
+            position: absolute;
+            bottom: 58px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.88);
+            color: #38bdf8;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 12;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            animation: pulseHint 2s infinite ease-in-out;
+            transition: opacity 0.4s ease;
+            white-space: nowrap;
+        }
+
+        @keyframes pulseHint {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.06); }
+        }
+
+        /* Interactive Range Track */
+        .slider-input {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            height: 14px;
+            z-index: 10;
+            cursor: pointer;
+            accent-color: #0284c7;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.45);
+            border-radius: 8px;
+            outline: none;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 🔘 EXTRA LARGE SLIDER KNOB (Chrome / Safari / Edge) */
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #0284c7;
+            border: 4px solid #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        .slider-input::-webkit-slider-thumb:hover {
+            transform: scale(1.12);
+            background: #0369a1;
+        }
+
+        /* 🔘 EXTRA LARGE SLIDER KNOB (Firefox) */
+        .slider-input::-moz-range-thumb {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #0284c7;
+            border: 4px solid #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        .slider-input::-moz-range-thumb:hover {
+            transform: scale(1.12);
+            background: #0369a1;
+        }
+
+        .slider-label {
+            position: absolute;
+            top: 15px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .label-before { left: 15px; }
+        .label-after { right: 15px; }
+
         @media (max-width: 700px) {
             .gallery-grid { grid-template-columns: 1fr; }
+            .slider-input::-webkit-slider-thumb { width: 38px; height: 38px; }
+            .slider-input::-moz-range-thumb { width: 38px; height: 38px; }
+            .slider-hint { font-size: 0.75rem; bottom: 52px; padding: 4px 12px; }
         }
+        
         .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #38bdf8; }
         .contact-card p { font-size: 1.15rem; margin-bottom: 15px; }
         .contact-card a { color: #38bdf8; text-decoration: none; font-weight: bold; }
@@ -75,9 +220,6 @@
 
     <section class="container">
         
-        <!-- ========================================== -->
-        <!-- 1. RESIDENTIAL SECTION                     -->
-        <!-- ========================================== -->
         <h2>Residential Concrete Restoration</h2>
         <p class="section-desc">Protect your home's structural curb appeal with premium deep cleaning designed exclusively for flat concrete surfaces.</p>
         <div class="services-grid">
@@ -97,9 +239,6 @@
 
         <div class="divider"></div>
 
-        <!-- ========================================== -->
-        <!-- 2. COMMERCIAL SECTION                      -->
-        <!-- ========================================== -->
         <h2>Commercial Surface Cleaning</h2>
         <p class="section-desc">Keep your storefront walkways and drive-thru lanes pristine, bright, and safe for your customers.</p>
         <div class="services-grid">
@@ -119,12 +258,26 @@
 
         <div class="divider"></div>
 
-        <!-- ========================================== -->
-        <!-- 3. OUR WORK (GALLERY SECTION)              -->
-        <!-- ========================================== -->
         <h2>Our Work</h2>
-        <p class="section-desc">See the difference a professional deep clean makes.</p>
+        <p class="section-desc">See the difference a professional deep clean makes. Drag the slider below to fade between before & after!</p>
+        
         <div class="gallery-grid">
+            
+            <div class="slider-section">
+                <div class="before-after-container">
+                    <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
+                    <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
+
+                    <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
+
+                    <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider">
+
+                    <div class="slider-label label-before">Before</div>
+                    <div class="slider-label label-after">After</div>
+                </div>
+                <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
+            </div>
+
             <div class="gallery-card">
                 <img src="1b.jpg" alt="Before pressure washing image showing dirty concrete">
                 <div class="gallery-caption">Before — heavy buildup and staining</div>
@@ -149,13 +302,9 @@
 
         <div class="divider"></div>
 
-        <!-- ========================================== -->
-        <!-- 4. CONTACT INFORMATION                     -->
-        <!-- ========================================== -->
         <h2>Contact Us</h2>
         <p class="section-desc">Ready to restore your property's curb appeal? Get in touch today.</p>
         <div class="contact-card">
-            <!-- Update your actual phone number and email here -->
             <p><strong>Call or Text:</strong> <a href="tel:4402070901">(440) 207-0901</a></p>
             <p><strong>Email:</strong> <a href="mailto:alex@goodmanwash.com">alex@goodmanwash.com</a></p>
             <p><strong>Service Area:</strong> Lake County, Ohio</p>
@@ -171,6 +320,24 @@
             <p style="font-size: 0.85rem; margin-top: 35px; color: #64748b;">&copy; 2026 Goodman Pressure Washing LLC. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const opacitySlider = document.getElementById('opacitySlider');
+        const afterImage = document.getElementById('afterImage');
+        const sliderHint = document.getElementById('sliderHint');
+
+        if (opacitySlider && afterImage) {
+            opacitySlider.addEventListener('input', (e) => {
+                const opacityValue = e.target.value / 100;
+                afterImage.style.opacity = opacityValue;
+
+                // Smoothly fade out hint badge once user moves the slider
+                if (sliderHint) {
+                    sliderHint.style.opacity = '0';
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
