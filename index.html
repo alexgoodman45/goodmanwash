@@ -42,6 +42,7 @@
         /* Styles for Gallery and Contact */
         .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px; }
         .gallery-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        /* default images used directly inside gallery-card */
         .gallery-card img { width: 100%; height: 420px; display: block; object-fit: cover; object-position: center; }
         .gallery-card.portrait img { height: 560px; object-fit: contain; object-position: center; background: #f8fafc; padding: 8px; }
         .gallery-card.full-width { grid-column: 1 / -1; justify-self: center; width: min(100%, 680px); }
@@ -65,27 +66,32 @@
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             background: #000;
+            /* Force a stable height so the grid item doesn't collapse if images are slow to load */
+            height: 420px;
         }
 
-        /* Constrain slider images so they match the gallery sizes and don't push the layout */
+        /* Make slider images fill the container reliably and avoid layout shifts */
         .before-after-container .slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-height: 420px; /* allow natural scaling but cap height */
-            height: auto;
+            height: 100%;
             display: block;
             object-fit: cover;
             object-position: center;
         }
 
+        /* For portrait-style slider cards, increase height to match design */
+        .gallery-card.portrait .before-after-container {
+            height: 560px;
+        }
+
         .before-image {
-            position: relative;
             z-index: 1;
         }
 
         .after-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             z-index: 2;
             opacity: 0;
             transition: opacity 0.05s linear;
@@ -198,7 +204,8 @@
             .slider-input::-moz-range-thumb { width: 38px; height: 38px; }
             .slider-hint { font-size: 0.75rem; bottom: 52px; padding: 4px 12px; }
             /* smaller screens: let slider images scale naturally */
-            .before-after-container .slider-image { height: auto; }
+            .before-after-container { height: auto; }
+            .before-after-container .slider-image { position: relative; height: auto; max-height: 420px; }
         }
         
         .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid rgba(2,132,199,0.06); }
