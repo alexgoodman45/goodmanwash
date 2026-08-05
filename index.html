@@ -51,8 +51,8 @@
         /* ========================================== */
         /* INTERACTIVE BEFORE & AFTER SLIDER STYLES   */
         /* ========================================== */
+        /* slider-section should not force full-width inside the gallery grid; keep it as a block inside gallery-card */
         .slider-section {
-            grid-column: 1 / -1;
             margin-bottom: 25px;
         }
 
@@ -201,7 +201,7 @@
             .before-after-container .slider-image { height: auto; }
         }
         
-        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1[...]
+        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); bo[...]
         .contact-card p { font-size: 1.15rem; margin-bottom: 15px; }
         .contact-card a { color: #38bdf8; text-decoration: none; font-weight: bold; }
         .contact-card a:hover { text-decoration: underline; color: #7dd3fc; }
@@ -269,35 +269,39 @@
         
         <div class="gallery-grid">
             
-                <div class="slider-section">
-                    <div class="before-after-container">
-                        <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
-                        <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
+                <!-- Wrap sliders in gallery-card so they participate in the grid like other items -->
+                <div class="gallery-card">
+                    <div class="slider-section">
+                        <div class="before-after-container">
+                            <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
+                            <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
 
-                        <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
+                            <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
 
-                        <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider">
+                            <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider">
 
-                        <div class="slider-label label-before">Before</div>
-                        <div class="slider-label label-after">After</div>
+                            <div class="slider-label label-before">Before</div>
+                            <div class="slider-label label-after">After</div>
+                        </div>
+                        <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
                     </div>
-                    <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
                 </div>
 
-                <!-- NEW: Second before/after slider for photos 3b (before) and 3a (after) -->
-                <div class="slider-section">
-                    <div class="before-after-container">
-                        <img src="3b.jpg" alt="Before pressure washing image 3" class="slider-image before-image">
-                        <img src="3a.jpg" alt="After pressure washing image 3" class="slider-image after-image">
+                <div class="gallery-card">
+                    <div class="slider-section">
+                        <div class="before-after-container">
+                            <img src="3b.jpg" alt="Before pressure washing image 3" class="slider-image before-image">
+                            <img src="3a.jpg" alt="After pressure washing image 3" class="slider-image after-image">
 
-                        <div class="slider-hint">↔ Drag slider to see results ↔</div>
+                            <div class="slider-hint">↔ Drag slider to see results ↔</div>
 
-                        <input type="range" min="0" max="100" value="0" class="slider-input">
+                            <input type="range" min="0" max="100" value="0" class="slider-input">
 
-                        <div class="slider-label label-before">Before</div>
-                        <div class="slider-label label-after">After</div>
+                            <div class="slider-label label-before">Before</div>
+                            <div class="slider-label label-after">After</div>
+                        </div>
+                        <div class="gallery-caption">Photo Set 3 — Driveway / Surface Transformation</div>
                     </div>
-                    <div class="gallery-caption">Photo Set 3 — Driveway / Surface Transformation</div>
                 </div>
 
             <div class="gallery-card">
@@ -380,8 +384,9 @@
             // Accessibility: allow clicking the container to toggle full 'after' view
             if (container && afterImg) {
                 container.addEventListener('dblclick', () => {
-                    const isFull = Number(container.querySelector('.slider-input').value) === 100;
-                    container.querySelector('.slider-input').value = isFull ? 0 : 100;
+                    const input = container.querySelector('.slider-input');
+                    const isFull = Number(input.value) === 100;
+                    input.value = isFull ? 0 : 100;
                     afterImg.style.opacity = isFull ? 0 : 1;
                 });
             }
