@@ -27,8 +27,8 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
         .subtitle { font-size: 1.4rem; color: #38bdf8; margin-bottom: 35px; font-weight: 500; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .cta-btn { display: inline-block; background-color: #0284c7; color: white; text-decoration: none; padding: 18px 45px; font-size: 1.25rem; font-weight: bold; border-radius: 5px; box-shadow:[...]
-        .cta-btn:hover { background-color: #0369a1; transform: translateY(-2px); }
+        .cta-btn { display: inline-block; background-color: #0284c7; color: white; text-decoration: none; padding: 18px 45px; font-size: 1.25rem; font-weight: bold; border-radius: 5px; box-shadow: 0 8px 18px rgba(2,132,199,0.18); transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease; }
+        .cta-btn:hover { background-color: #0369a1; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(2,132,199,0.2); }
         section { padding: 80px 0; }
         h2 { text-align: center; font-size: 2.4rem; color: #0f172a; margin-bottom: 15px; text-transform: uppercase; font-weight: 700; }
         .section-desc { text-align: center; color: #64748b; font-size: 1.1rem; margin-bottom: 50px; }
@@ -201,7 +201,7 @@
             .before-after-container .slider-image { height: auto; }
         }
         
-        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); bo[...]
+        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid rgba(2,132,199,0.06); }
         .contact-card p { font-size: 1.15rem; margin-bottom: 15px; }
         .contact-card a { color: #38bdf8; text-decoration: none; font-weight: bold; }
         .contact-card a:hover { text-decoration: underline; color: #7dd3fc; }
@@ -278,7 +278,7 @@
 
                             <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
 
-                            <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider">
+                            <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider" aria-label="Before/After slider">
 
                             <div class="slider-label label-before">Before</div>
                             <div class="slider-label label-after">After</div>
@@ -295,7 +295,7 @@
 
                             <div class="slider-hint">↔ Drag slider to see results ↔</div>
 
-                            <input type="range" min="0" max="100" value="0" class="slider-input">
+                            <input type="range" min="0" max="100" value="0" class="slider-input" aria-label="Before/After slider">
 
                             <div class="slider-label label-before">Before</div>
                             <div class="slider-label label-after">After</div>
