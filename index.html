@@ -27,7 +27,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
         .subtitle { font-size: 1.4rem; color: #38bdf8; margin-bottom: 35px; font-weight: 500; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .cta-btn { display: inline-block; background-color: #0284c7; color: white; text-decoration: none; padding: 18px 45px; font-size: 1.25rem; font-weight: bold; border-radius: 5px; box-shadow: 0 8px 18px rgba(2,132,199,0.18); transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease; }
+        .cta-btn { display: inline-block; background-color: #0284c7; color: white; text-decoration: none; padding: 18px 45px; font-size: 1.25rem; font-weight: bold; border-radius: 5px; box-shadow: 0 8px 18px rgba(2,132,199,0.18); }
         .cta-btn:hover { background-color: #0369a1; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(2,132,199,0.2); }
         section { padding: 80px 0; }
         h2 { text-align: center; font-size: 2.4rem; color: #0f172a; margin-bottom: 15px; text-transform: uppercase; font-weight: 700; }
@@ -208,7 +208,7 @@
             .before-after-container .slider-image { position: relative; height: auto; max-height: 420px; }
         }
         
-        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid rgba(2,132,199,0.06); }
+        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .contact-card p { font-size: 1.15rem; margin-bottom: 15px; }
         .contact-card a { color: #38bdf8; text-decoration: none; font-weight: bold; }
         .contact-card a:hover { text-decoration: underline; color: #7dd3fc; }
@@ -230,6 +230,45 @@
             </div>
         </div>
     </header>
+
+    <!-- Interactive sliders moved up so visitors see them on landing -->
+    <div class="container" style="padding-top:40px; padding-bottom:40px;">
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="slider-section">
+                    <div class="before-after-container">
+                        <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
+                        <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
+
+                        <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
+
+                        <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider" aria-label="Before/After slider">
+
+                        <div class="slider-label label-before">Before</div>
+                        <div class="slider-label label-after">After</div>
+                    </div>
+                    <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="slider-section">
+                    <div class="before-after-container">
+                        <img src="3b.png" alt="Before pressure washing image 3" class="slider-image before-image">
+                        <img src="3a.png" alt="After pressure washing image 3" class="slider-image after-image">
+
+                        <div class="slider-hint">↔ Drag slider to see results ↔</div>
+
+                        <input type="range" min="0" max="100" value="0" class="slider-input" aria-label="Before/After slider">
+
+                        <div class="slider-label label-before">Before</div>
+                        <div class="slider-label label-after">After</div>
+                    </div>
+                    <div class="gallery-caption">Driveway / Surface Transformation</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="container">
         
@@ -276,41 +315,6 @@
         
         <div class="gallery-grid">
             
-                <!-- Wrap sliders in gallery-card so they participate in the grid like other items -->
-                <div class="gallery-card">
-                    <div class="slider-section">
-                        <div class="before-after-container">
-                            <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
-                            <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
-
-                            <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
-
-                            <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider" aria-label="Before/After slider">
-
-                            <div class="slider-label label-before">Before</div>
-                            <div class="slider-label label-after">After</div>
-                        </div>
-                        <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
-                    </div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="slider-section">
-                        <div class="before-after-container">
-                            <img src="3b.png" alt="Before pressure washing image 3" class="slider-image before-image">
-                            <img src="3a.png" alt="After pressure washing image 3" class="slider-image after-image">
-
-                            <div class="slider-hint">↔ Drag slider to see results ↔</div>
-
-                            <input type="range" min="0" max="100" value="0" class="slider-input" aria-label="Before/After slider">
-
-                            <div class="slider-label label-before">Before</div>
-                            <div class="slider-label label-after">After</div>
-                        </div>
-                        <div class="gallery-caption">Photo Set 3 — Driveway / Surface Transformation</div>
-                    </div>
-                </div>
-
             <div class="gallery-card">
                 <img src="1b.jpg" alt="Before pressure washing image showing dirty concrete">
                 <div class="gallery-caption">Before — heavy buildup and staining</div>
