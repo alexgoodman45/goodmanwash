@@ -65,7 +65,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            background: #000;
+            background: #f8fafc; /* use light background so images don't show as black while loading */
             /* Force a stable height so the grid item doesn't collapse if images are slow to load */
             height: 420px;
         }
@@ -78,8 +78,9 @@
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover;
+            object-fit: contain; /* show full image without cropping */
             object-position: center;
+            background: #f8fafc;
         }
 
         /* For portrait-style slider cards, increase height to match design */
@@ -203,9 +204,7 @@
             .slider-input::-webkit-slider-thumb { width: 38px; height: 38px; }
             .slider-input::-moz-range-thumb { width: 38px; height: 38px; }
             .slider-hint { font-size: 0.75rem; bottom: 52px; padding: 4px 12px; }
-            /* smaller screens: let slider images scale naturally */
-            .before-after-container { height: auto; }
-            .before-after-container .slider-image { position: relative; height: auto; max-height: 420px; }
+            /* Keep overlay positioning on small screens so the slider sits on top of images */
         }
         
         .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -389,6 +388,11 @@
                 // Also support pointer/touch interactions by revealing hint again on focus out
                 slider.addEventListener('focus', () => {
                     if (hint) hint.style.opacity = '1';
+                });
+
+                // Ensure the slider sits above images on small touch devices (some browsers move range to bottom)
+                slider.addEventListener('touchstart', () => {
+                    slider.focus();
                 });
             }
 
