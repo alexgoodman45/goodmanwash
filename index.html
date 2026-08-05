@@ -70,7 +70,8 @@
         /* Constrain slider images so they match the gallery sizes and don't push the layout */
         .before-after-container .slider-image {
             width: 100%;
-            height: 420px; /* match gallery-card image height */
+            max-height: 420px; /* allow natural scaling but cap height */
+            height: auto;
             display: block;
             object-fit: cover;
             object-position: center;
