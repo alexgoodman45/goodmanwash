@@ -27,7 +27,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
         .subtitle { font-size: 1.4rem; color: #38bdf8; margin-bottom: 35px; font-weight: 500; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .cta-btn { display: inline-block; background-color: #0284c7; color: white; text-decoration: none; padding: 18px 45px; font-size: 1.25rem; font-weight: bold; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); transition: background 0.3s, transform 0.2s; }
+        .cta-btn { display: inline-block; background-color: #0284c7; color: white; text-decoration: none; padding: 18px 45px; font-size: 1.25rem; font-weight: bold; border-radius: 5px; box-shadow:[...]
         .cta-btn:hover { background-color: #0369a1; transform: translateY(-2px); }
         section { padding: 80px 0; }
         h2 { text-align: center; font-size: 2.4rem; color: #0f172a; margin-bottom: 15px; text-transform: uppercase; font-weight: 700; }
@@ -195,7 +195,7 @@
             .slider-hint { font-size: 0.75rem; bottom: 52px; padding: 4px 12px; }
         }
         
-        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #38bdf8; }
+        .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1[...]
         .contact-card p { font-size: 1.15rem; margin-bottom: 15px; }
         .contact-card a { color: #38bdf8; text-decoration: none; font-weight: bold; }
         .contact-card a:hover { text-decoration: underline; color: #7dd3fc; }
@@ -263,20 +263,36 @@
         
         <div class="gallery-grid">
             
-            <div class="slider-section">
-                <div class="before-after-container">
-                    <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
-                    <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
+                <div class="slider-section">
+                    <div class="before-after-container">
+                        <img src="before_porch.jpg" alt="Porch Before Pressure Washing" class="slider-image before-image">
+                        <img src="after_porch.jpg" alt="Porch After Pressure Washing" class="slider-image after-image" id="afterImage">
 
-                    <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
+                        <div class="slider-hint" id="sliderHint">↔ Drag slider to see results ↔</div>
 
-                    <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider">
+                        <input type="range" min="0" max="100" value="0" class="slider-input" id="opacitySlider">
 
-                    <div class="slider-label label-before">Before</div>
-                    <div class="slider-label label-after">After</div>
+                        <div class="slider-label label-before">Before</div>
+                        <div class="slider-label label-after">After</div>
+                    </div>
+                    <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
                 </div>
-                <div class="gallery-caption">Front Porch & Entryway — Interactive Transformation</div>
-            </div>
+
+                <!-- NEW: Second before/after slider for photos 3b (before) and 3a (after) -->
+                <div class="slider-section">
+                    <div class="before-after-container">
+                        <img src="3b.jpg" alt="Before pressure washing image 3" class="slider-image before-image">
+                        <img src="3a.jpg" alt="After pressure washing image 3" class="slider-image after-image">
+
+                        <div class="slider-hint">↔ Drag slider to see results ↔</div>
+
+                        <input type="range" min="0" max="100" value="0" class="slider-input">
+
+                        <div class="slider-label label-before">Before</div>
+                        <div class="slider-label label-after">After</div>
+                    </div>
+                    <div class="gallery-caption">Photo Set 3 — Driveway / Surface Transformation</div>
+                </div>
 
             <div class="gallery-card">
                 <img src="1b.jpg" alt="Before pressure washing image showing dirty concrete">
@@ -322,21 +338,48 @@
     </footer>
 
     <script>
-        const opacitySlider = document.getElementById('opacitySlider');
-        const afterImage = document.getElementById('afterImage');
-        const sliderHint = document.getElementById('sliderHint');
+        // Generalized support for multiple before/after sliders on the page.
+        document.querySelectorAll('.before-after-container').forEach((container, index) => {
+            const beforeImg = container.querySelector('.before-image');
+            const afterImg = container.querySelector('.after-image');
+            const slider = container.querySelector('.slider-input');
+            const hint = container.querySelector('.slider-hint');
 
-        if (opacitySlider && afterImage) {
-            opacitySlider.addEventListener('input', (e) => {
-                const opacityValue = e.target.value / 100;
-                afterImage.style.opacity = opacityValue;
+            // Initialize opacity based on input's current value (in case of server-side setting)
+            if (slider && afterImg) {
+                const setOpacityFromInput = () => {
+                    const opacityValue = (Number(slider.value) || 0) / 100;
+                    afterImg.style.opacity = opacityValue;
+                };
 
-                // Smoothly fade out hint badge once user moves the slider
-                if (sliderHint) {
-                    sliderHint.style.opacity = '0';
-                }
-            });
-        }
+                // Set initial state
+                setOpacityFromInput();
+
+                // Update as the user moves the slider
+                slider.addEventListener('input', (e) => {
+                    const opacityValue = e.target.value / 100;
+                    afterImg.style.opacity = opacityValue;
+
+                    if (hint) {
+                        hint.style.opacity = '0';
+                    }
+                });
+
+                // Also support pointer/touch interactions by revealing hint again on focus out
+                slider.addEventListener('focus', () => {
+                    if (hint) hint.style.opacity = '1';
+                });
+            }
+
+            // Accessibility: allow clicking the container to toggle full 'after' view
+            if (container && afterImg) {
+                container.addEventListener('dblclick', () => {
+                    const isFull = Number(container.querySelector('.slider-input').value) === 100;
+                    container.querySelector('.slider-input').value = isFull ? 0 : 100;
+                    afterImg.style.opacity = isFull ? 0 : 1;
+                });
+            }
+        });
     </script>
 
 </body>
