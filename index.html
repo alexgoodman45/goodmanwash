@@ -67,10 +67,13 @@
             background: #000;
         }
 
-        .slider-image {
+        /* Constrain slider images so they match the gallery sizes and don't push the layout */
+        .before-after-container .slider-image {
             width: 100%;
-            height: auto;
+            height: 420px; /* match gallery-card image height */
             display: block;
+            object-fit: cover;
+            object-position: center;
         }
 
         .before-image {
@@ -193,6 +196,8 @@
             .slider-input::-webkit-slider-thumb { width: 38px; height: 38px; }
             .slider-input::-moz-range-thumb { width: 38px; height: 38px; }
             .slider-hint { font-size: 0.75rem; bottom: 52px; padding: 4px 12px; }
+            /* smaller screens: let slider images scale naturally */
+            .before-after-container .slider-image { height: auto; }
         }
         
         .contact-card { background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 600px; margin: 0 auto 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1[...]
